@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+lb config \
+  --distribution trixie \
+  --architectures amd64 \
+  --archive-areas "main contrib non-free non-free-firmware" \
+  --binary-images iso-hybrid \
+  --apt-recommends true \
+  --firmware-chroot true \
+  --firmware-binary true \
+  --source false \
+  --iso-application "debwin" \
+  --iso-publisher "debwin contributors" \
+  --iso-volume "DEBWIN"
