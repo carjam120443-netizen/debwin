@@ -36,7 +36,7 @@ jobs:
         run: |
           chmod +x auto/config auto/build build.sh config/hooks/live/0100-debwin.chroot
           ./auto/config
-          ./auto/build
+          sudo ./auto/build
 
       - name: List generated files
         run: |
