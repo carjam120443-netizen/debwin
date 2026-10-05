@@ -1,0 +1,45 @@
+# Desktop
+xfce4
+xfce4-goodies
+xfce4-whiskermenu-plugin
+lightdm
+lightdm-gtk-greeter
+
+# Windows-like styling
+thunar
+thunar-archive-plugin
+thunar-volman
+papirus-icon-theme
+arc-theme
+fonts-liberation
+fonts-noto
+xfwm4-themes
+
+# Network and hardware
+network-manager
+network-manager-gnome
+wireless-tools
+wpasupplicant
+firmware-linux
+firmware-linux-free
+
+# Applications and tools
+firefox-esr
+mousepad
+ristretto
+xfce4-terminal
+xfce4-taskmanager
+xfce4-screenshooter
+file-roller
+git
+curl
+wget
+sudo
+nano
+vim
+htop
+
+# Live system
+live-boot
+live-config
+calamares
