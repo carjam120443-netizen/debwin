@@ -10,6 +10,5 @@ if ! command -v lb >/dev/null 2>&1; then
 fi
 
 lb clean --purge || true
-rm -rf config
 ./auto/config
 ./auto/build
