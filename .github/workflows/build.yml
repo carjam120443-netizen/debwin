@@ -23,7 +23,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            live-build \
             debootstrap \
             debian-archive-keyring \
             squashfs-tools \
@@ -32,6 +31,14 @@ jobs:
             grub-efi-amd64-bin \
             mtools \
             dosfstools
+
+      - name: Install Debian Trixie live-build
+        run: |
+          curl -fsSL \
+            https://deb.debian.org/debian/pool/main/l/live-build/live-build_20250505+deb13u1_all.deb \
+            -o /tmp/live-build.deb
+          sudo dpkg -i /tmp/live-build.deb
+          lb --version
 
       - name: Build debwin
         run: |
