@@ -1,0 +1,59 @@
+#!/bin/sh
+set -e
+
+install -d /usr/share/backgrounds
+install -d /usr/local/bin
+install -d /etc/skel/.config/autostart
+
+cat > /usr/share/backgrounds/debwin.svg <<'EOF'
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <path d="M0 780 C420 610 690 950 1080 720 C1420 520 1620 700 1920 540 L1920 1080 L0 1080 Z" fill="#111827" opacity=".55"/>
+  <text x="120" y="160" font-family="Liberation Sans, sans-serif" font-size="72" font-weight="700" fill="#ffffff">debwin</text>
+  <text x="124" y="220" font-family="Liberation Sans, sans-serif" font-size="28" fill="#dbeafe">Debian-based. Windows-inspired. Yours.</text>
+</svg>
+EOF
+
+cat > /usr/local/bin/debwin-first-login <<'EOF'
+#!/bin/sh
+set -eu
+
+xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker" || true
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus" || true
+xfconf-query -c xfwm4 -p /general/button_layout -s "O|HMC" || true
+
+for prop in $(xfconf-query -c xfce4-panel -l 2>/dev/null | grep '/position$' || true); do
+    xfconf-query -c xfce4-panel -p "$prop" -s "p=8;x=0;y=0" || true
+done
+
+for prop in $(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep '/image-path$' || true); do
+    xfconf-query -c xfce4-desktop -p "$prop" -s "/usr/share/backgrounds/debwin.svg" || true
+done
+
+rm -f "$HOME/.config/autostart/debwin-first-login.desktop"
+EOF
+chmod 0755 /usr/local/bin/debwin-first-login
+
+cat > /etc/skel/.config/autostart/debwin-first-login.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=debwin first-login setup
+Comment=Apply debwin desktop defaults
+Exec=/usr/local/bin/debwin-first-login
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+Terminal=false
+EOF
+
+cat > /etc/lightdm/lightdm.conf.d/50-debwin.conf <<'EOF'
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+EOF
+
+systemctl enable NetworkManager 2>/dev/null || true
