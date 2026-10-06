@@ -44,15 +44,11 @@ EOF
 systemctl enable NetworkManager 2>/dev/null || true
 
 # Relax Calamares password checks for the live installer.
-# debwin is intended to be easy to install in VMs/test systems, so do not
-# force users to create a long/complex password during installation.
+# Debian's Calamares users module uses a YAML config. Keep the edit simple:
+# allow weak passwords and remove a minimum-length requirement when present.
 if [ -f /etc/calamares/modules/users.conf ]; then
     sed -i \\
-        -e '/^[[:space:]]*minLength:/ s/:.*/: -1/' \\
-        -e '/^[[:space:]]*maxLength:/ s/:.*/: -1/' \\
-        -e '/^[[:space:]]*-[[:space:]]*minlen=/ s/minlen=[0-9]*/minlen=0/' \\
-        -e '/^[[:space:]]*-[[:space:]]*minclass=/ s/minclass=[0-9]*/minclass=0/' \\
-        -e '/^[[:space:]]*allowWeakPasswords:/ s/:.*/: true/' \\
-        -e '/^[[:space:]]*allowWeakPasswordsDefault:/ s/:.*/: true/' \\
+        -e 's/^\\([[:space:]]*allowWeakPasswords:[[:space:]]*\\).*/\\1true/' \\
+        -e 's/^\\([[:space:]]*minLength:[[:space:]]*\\).*/\\1-1/' \\
         /etc/calamares/modules/users.conf
 fi
