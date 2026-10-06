@@ -26,6 +26,8 @@ freedom and package ecosystem of Linux.
 - 💿 Git-controlled live-build configuration
 - 🤖 GitHub Actions ISO builds
 - 📦 Calamares installer
+- 🐚 Optional Zsh shell during installation
+- ✨ Optional Oh My Zsh setup after installation
 - 📜 Clear credits and license information
 
 ## 🏗️ How it works
@@ -65,6 +67,17 @@ chmod +x auto/config auto/build build.sh config/hooks/live/0100-debwin.chroot
 ```
 
 For the easiest testing workflow, boot the resulting ISO in VirtualBox first.
+
+## 🐚 Shell choices
+
+Calamares includes an **Optional software** page where the user can choose **Zsh** during
+installation. Bash remains the default unless the user changes their shell.
+
+If Zsh is installed, debwin also offers an explicit first-login choice to install
+**Oh My Zsh** for that user. This keeps the framework user-specific instead of installing
+it system-wide.
+
+Oh My Zsh requires Zsh and supports installation through its official installer.
 
 ## 🤖 GitHub Actions
 
@@ -127,6 +140,8 @@ debwin/
 ### 0.3 — Installer and system integration
 
 - [x] Calamares included in the live image
+- [x] Optional Zsh selection
+- [x] Optional Oh My Zsh first-login setup
 - [ ] Test Calamares installation
 - [ ] Custom installer branding
 - [ ] First-run setup

@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+if ! command -v zsh >/dev/null 2>&1; then exit 0; fi
+if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then exit 0; fi
+printf '%s\n' "Zsh is installed. Install Oh My Zsh for this user? [y/N]"
+IFS= read -r answer || answer=n
+case "$answer" in
+ y|Y|yes|YES)
+   if command -v curl >/dev/null 2>&1; then
+     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+   else
+     printf '%s\n' "curl is not installed; skipping Oh My Zsh."
+   fi ;;
+esac

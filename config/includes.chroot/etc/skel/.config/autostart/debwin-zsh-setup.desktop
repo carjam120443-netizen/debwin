@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=debwin Zsh setup
+Comment=Optionally install Oh My Zsh after choosing Zsh
+Exec=xfce4-terminal --command=/usr/local/bin/debwin-zsh-setup
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+Terminal=false
