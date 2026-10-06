@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#080d1a"/>
+      <stop offset=".55" stop-color="#172554"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60a5fa" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <path d="M0 760C360 560 680 930 1060 700c370-224 560-38 860-240v620H0z" fill="url(#wave)"/>
+  <path d="M0 850c390-160 650 80 1040-110 360-176 570-60 880-210v550H0z" fill="#020617" opacity=".42"/>
+  <g font-family="Liberation Sans,Arial,sans-serif">
+    <text x="120" y="170" font-size="86" font-weight="700" fill="#fff">debwin</text>
+    <text x="124" y="225" font-size="30" fill="#dbeafe">Debian underneath. Windows-inspired on top.</text>
+  </g>
+</svg>

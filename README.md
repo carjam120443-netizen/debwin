@@ -1,5 +1,7 @@
 # debwin 🪟🐧
 
+![debwin logo](https://raw.githubusercontent.com/carjam120443-netizen/debwin/main/config/includes.chroot/usr/share/pixmaps/debwin-logo.svg)
+
 **A Debian-based, Windows-inspired Linux distribution project.**
 
 debwin is an independent Linux OS project built from Debian using **Debian Live / live-build**.
@@ -16,12 +18,14 @@ freedom and package ecosystem of Linux.
 - 🪟 Windows-inspired bottom panel
 - 📋 Whisker Menu support
 - 🎨 Arc + Papirus styling
+- 🖼️ Custom debwin wallpaper and logo
 - 📁 Thunar file manager
 - 🌐 NetworkManager
 - 🦊 Firefox ESR
 - 🛠️ Common administration and development tools
 - 💿 Git-controlled live-build configuration
 - 🤖 GitHub Actions ISO builds
+- 📦 Calamares installer
 - 📜 Clear credits and license information
 
 ## 🏗️ How it works
@@ -112,7 +116,8 @@ debwin/
 
 ### 0.2 — Desktop polish
 
-- [ ] Custom debwin icon
+- [x] Custom debwin logo
+- [x] Custom debwin wallpaper
 - [ ] Better Start-menu layout
 - [ ] Custom panel launchers
 - [ ] More Windows-like window decorations
@@ -121,6 +126,7 @@ debwin/
 
 ### 0.3 — Installer and system integration
 
+- [x] Calamares included in the live image
 - [ ] Test Calamares installation
 - [ ] Custom installer branding
 - [ ] First-run setup
