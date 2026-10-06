@@ -42,3 +42,17 @@ greeter-session=lightdm-gtk-greeter
 EOF
 
 systemctl enable NetworkManager 2>/dev/null || true
+
+# Relax Calamares password checks for the live installer.
+# debwin is intended to be easy to install in VMs/test systems, so do not
+# force users to create a long/complex password during installation.
+if [ -f /etc/calamares/modules/users.conf ]; then
+    sed -i \\
+        -e '/^[[:space:]]*minLength:/ s/:.*/: -1/' \\
+        -e '/^[[:space:]]*maxLength:/ s/:.*/: -1/' \\
+        -e '/^[[:space:]]*-[[:space:]]*minlen=/ s/minlen=[0-9]*/minlen=0/' \\
+        -e '/^[[:space:]]*-[[:space:]]*minclass=/ s/minclass=[0-9]*/minclass=0/' \\
+        -e '/^[[:space:]]*allowWeakPasswords:/ s/:.*/: true/' \\
+        -e '/^[[:space:]]*allowWeakPasswordsDefault:/ s/:.*/: true/' \\
+        /etc/calamares/modules/users.conf
+fi
